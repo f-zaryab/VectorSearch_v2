@@ -1,6 +1,8 @@
 import express, { json } from "express";
 import dotenv from "dotenv";
-// import { connectDB } from "../database/db";
+// src
+import { connectDB } from "../database/db.js";
+import { tfEmbedder } from "../utils/utlis.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 5001;
@@ -22,8 +24,11 @@ app.get("/api/v1", (req, res) => {
   res.send("<h1>Welcome to Backend of Vector-Search Engine</h1>");
 });
 
+// Just testing somethings...
+// await tfEmbedder("hello world");
+
 // Server -------------------------------------------------------------
 app.listen(PORT, () => {
+  connectDB();
   console.log(`App is listening on Port: ${PORT}`);
-//   connectDB();
 });
